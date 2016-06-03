@@ -54,35 +54,35 @@ for folder, subfolders, filenames in os.walk(mp3dir):
                     trackNumber = trackNumber[0]
                 if len(trackNumber) == 1:
                     trackNumber = '0' + trackNumber
-                    x = ['/', '\\']
-                    y = ['*', '|']
-                    z = [':', ';', '=']
-                    for i in x:
-                        if i in title:
-                            title.replace(i, '-')
-                    for i in y:
-                        if i in title:
-                            title.replace(i, ' ')
-                    for i in z:
-                        if i in title:
-                            title.replace(i, ' - ')
-                    if '[' in title:
-                        title.replace('[', '(')
-                    if ']' in title:
-                        title.replace(']', ')')
-                    if '"' in title:
-                        title.replace('"', "'")
-                    newFilename = trackNumber + ' - ' + title + '.mp3'
-                    absfilename = os.path.join(os.path.abspath(folder),
-                                           newFilename).encode('utf-8')
-                    if absfilename == filename:
-                        print('The file %s is already correctly '
-                              'named.') % absfilename
-                        notRenamedCounter += 1
-                        continue
-                    print ('Renaming %s to %s ...') % (filename,
-                                                       absfilename)
-                    renamedCounter +=1
+                x = ['/', '\\']
+                y = ['*', '|']
+                z = [':', ';', '=']
+                for i in x:
+                    if i in title:
+                        title.replace(i, '-')
+                for i in y:
+                    if i in title:
+                        title.replace(i, ' ')
+                for i in z:
+                    if i in title:
+                        title.replace(i, ' - ')
+                if '[' in title:
+                    title.replace('[', '(')
+                if ']' in title:
+                    title.replace(']', ')')
+                if '"' in title:
+                    title.replace('"', "'")
+                newFilename = trackNumber + ' - ' + title + '.mp3'
+                absfilename = os.path.join(os.path.abspath(folder),
+                               newFilename).encode('utf-8')
+                if absfilename == filename:
+                    print('The file %s is already correctly '
+                      'named.') % absfilename
+                    notRenamedCounter += 1
+                    continue
+                print ('Renaming %s to %s ...') % (filename,
+                                                   absfilename)
+                renamedCounter +=1
 
 #                        shutil.move(filename, absfilename)
 print ('A total of %s files were renamed.') % renamedCounter
